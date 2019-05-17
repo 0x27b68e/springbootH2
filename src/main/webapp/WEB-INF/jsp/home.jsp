@@ -16,6 +16,7 @@
 </form>
 
 <a href="/read">Read Student <br />
+<a href="/getStudents">Read All Student<br />
 <a href="/delete">Delete Student
 </body>
 </html>

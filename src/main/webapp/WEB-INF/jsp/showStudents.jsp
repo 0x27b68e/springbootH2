@@ -41,6 +41,6 @@ tr:nth-child(even) {
   </c:forEach>
 </table>
 
-<a href="/" /> Home
+<a href="/" /> Home Page
 </body>
 </html>

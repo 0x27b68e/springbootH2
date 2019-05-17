@@ -69,18 +69,11 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "deleteStudent")
-	public ModelAndView deleteStudent(@RequestParam("id") int id) {
-		ModelAndView modelAndView = new ModelAndView("studentInfo");
-		Student student = serviceStudent.findById(id).get();
-		System.out.println(student);
-		if(student == null) {
-			modelAndView.addObject("student", new Student());
-			return modelAndView;
+	public String deleteStudent(@RequestParam("id") int id) {
+		if(serviceStudent.existsById(id)) {
+			Student student = serviceStudent.findById(id).get();
+			serviceStudent.delete(student);
 		}
-		if(student != null) {
-		modelAndView.addObject("student", student);
-		serviceStudent.delete(student);;
-		}
-		return modelAndView;
+		return "home";
 	}
 }
