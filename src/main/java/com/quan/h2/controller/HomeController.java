@@ -76,4 +76,19 @@ public class HomeController {
 		}
 		return "home";
 	}
+	
+	
+	@RequestMapping(value = "update")
+	public String update() {
+		return "update";
+	}
+	
+	@RequestMapping(value = "updateStudent")
+	public ModelAndView updateStudent(@ModelAttribute Student student) {
+		ModelAndView modelAndView = new ModelAndView("studentInfo");
+		modelAndView.addObject("student", student);
+		serviceStudent.save(student);
+		
+		return modelAndView;
+	}
 }

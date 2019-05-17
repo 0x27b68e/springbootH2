@@ -7,17 +7,12 @@
 <title>hello</title>
 </head>
 <body>
-<p>Add Student</p>
-<form action="addStudent">
+<p>Update Student</p>
+<form action="updateStudent">
 <input type="text" name="id"> Id <br />
 <input type="text" name="name"> Name <br />
 <input type="text" name="score"> Score <br />
-<input type="submit" value="Submit">
+<input type="submit" value="Update">
 </form>
-
-<a href="/read">Read Student <br />
-<a href="/getStudents">Read All Student<br />
-<a href="/update">Update Student<br />
-<a href="/delete">Delete Student
 </body>
 </html>
