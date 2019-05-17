@@ -1,5 +1,8 @@
 package com.quan.h2.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -44,6 +47,17 @@ public class HomeController {
 		ModelAndView modelAndView = new ModelAndView("studentInfo");
 		Student student = serviceStudent.findById(id).orElse(new Student());
 		modelAndView.addObject("student", student);
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "getStudents")
+	public ModelAndView getStudents() {
+		List<Student> listStudents = new ArrayList<Student>();
+		Iterable<Student> findAll = serviceStudent.findAll();
+		findAll.forEach((student) -> listStudents.add(student));
+		ModelAndView modelAndView = new ModelAndView("showStudents");
+		modelAndView.addObject("listStudents", listStudents);
+		
 		return modelAndView;
 	}
 	

@@ -52,6 +52,12 @@
 		</dependency>
 		
 		<dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>jstl</artifactId>
+		    <version>1.2</version>
+		</dependency>
+		
+		<dependency>
 		    <groupId>org.mortbay.jasper</groupId>
 		    <artifactId>jasper-jsp</artifactId>
 		    <version>9.0.14.1</version>

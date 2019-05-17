@@ -15,7 +15,7 @@
 <input type="submit" value="Submit">
 </form>
 
-<a href="/read">Read Student
+<a href="/read">Read Student <br />
 <a href="/delete">Delete Student
 </body>
 </html>
