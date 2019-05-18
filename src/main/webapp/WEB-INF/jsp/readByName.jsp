@@ -9,8 +9,8 @@
 <body>
 <h2> Search Student </h2>
 
-<form action="getStudent">
-<input type="text" name="id"> By ID
+<form action="getStudentByName">
+<input type="text" name="name"> By Name
 <input type="submit" value="Get Student">
 </body>
 </html>

@@ -15,7 +15,9 @@
 <input type="submit" value="Submit">
 </form>
 
-<a href="/read">Read Student <br />
+<a href="/read">Read Student By Id <br />
+<a href="/readByName">Read Student By Name<br />
+<a href="/readByScore">Read Student By Score<br />
 <a href="/getStudents">Read All Student<br />
 <a href="/update">Update Student<br />
 <a href="/delete">Delete Student

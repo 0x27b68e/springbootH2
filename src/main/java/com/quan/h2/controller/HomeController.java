@@ -18,38 +18,68 @@ public class HomeController {
 
 	@Autowired(required = true)
 	ServiceStudent serviceStudent;
-	
+
 	@RequestMapping(value = "/")
 	public String home() {
 		serviceStudent.save(new Student(1, "A", 7));
 		serviceStudent.save(new Student(2, "B", 8));
 		return "home";
 	}
-	
+
 	@RequestMapping(value = "addStudent")
 	public ModelAndView addStudent(@ModelAttribute Student student) {
 		ModelAndView modelAndView = new ModelAndView("studentInfo");
 		Student returnStudent = serviceStudent.save(student);
 		System.out.println("student is added: " + returnStudent);
 		modelAndView.addObject("student", student);
-		
+
 		return modelAndView;
 	}
-	
-	
+
 	@RequestMapping("read")
 	public String read() {
 		return "read";
 	}
 	
+	@RequestMapping("readByName")
+	public String readByName() {
+		return "readByName";
+	}
+	
+	@RequestMapping("readByScore")
+	public String readByScore() {
+		return "readByScore";
+	}
+
+
 	@RequestMapping("getStudent")
 	public ModelAndView getStudent(@RequestParam("id") int id) {
 		ModelAndView modelAndView = new ModelAndView("studentInfo");
-		Student student = serviceStudent.findById(id).orElse(new Student());
-		modelAndView.addObject("student", student);
-		return modelAndView;
+			Student student = serviceStudent.findById(id).orElse(new Student());
+			modelAndView.addObject("student", student);
+			return modelAndView;
 	}
+
 	
+	  @RequestMapping(value = "getStudentByName") 
+	  public ModelAndView getStudentByName(@RequestParam("name") String name) { 
+		  ModelAndView modelAndView = new ModelAndView("showStudents"); 
+		  List<Student> listName = serviceStudent.findByName(name); 
+		  modelAndView.addObject("listStudents", listName);
+		  
+	  return modelAndView; 
+}
+	  
+	  @RequestMapping(value = "getStudentByScore") 
+	  public ModelAndView getStudentByScore(@RequestParam("score") int score) { 
+		  ModelAndView modelAndView = new ModelAndView("showStudents"); 
+		  List<Student> listName = serviceStudent.findByScore(score); 
+		  modelAndView.addObject("listStudents", listName);
+		  
+	  return modelAndView; 
+}
+	 
+
 	@RequestMapping(value = "getStudents")
 	public ModelAndView getStudents() {
 		List<Student> listStudents = new ArrayList<Student>();
@@ -57,38 +87,35 @@ public class HomeController {
 		findAll.forEach((student) -> listStudents.add(student));
 		ModelAndView modelAndView = new ModelAndView("showStudents");
 		modelAndView.addObject("listStudents", listStudents);
-		
+
 		return modelAndView;
 	}
-	
-	
-	
+
 	@RequestMapping("delete")
 	public String delete() {
 		return "delete";
 	}
-	
+
 	@RequestMapping(value = "deleteStudent")
 	public String deleteStudent(@RequestParam("id") int id) {
-		if(serviceStudent.existsById(id)) {
+		if (serviceStudent.existsById(id)) {
 			Student student = serviceStudent.findById(id).get();
 			serviceStudent.delete(student);
 		}
 		return "home";
 	}
-	
-	
+
 	@RequestMapping(value = "update")
 	public String update() {
 		return "update";
 	}
-	
+
 	@RequestMapping(value = "updateStudent")
 	public ModelAndView updateStudent(@ModelAttribute Student student) {
 		ModelAndView modelAndView = new ModelAndView("studentInfo");
 		modelAndView.addObject("student", student);
 		serviceStudent.save(student);
-		
+
 		return modelAndView;
 	}
 }
