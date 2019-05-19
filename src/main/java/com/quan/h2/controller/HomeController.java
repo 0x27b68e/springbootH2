@@ -50,7 +50,16 @@ public class HomeController {
 	public String readByScore() {
 		return "readByScore";
 	}
+	
+	@RequestMapping("readByIdGreaterThan")
+	public String readByIdGreaterThan() {
+		return "readByIdGreaterThan";
+	}
 
+	@RequestMapping(value = "readByScoreSorted")
+	public String readByScoreSorted() {
+		return "readByScoreSorted";
+	}
 
 	@RequestMapping("getStudent")
 	public ModelAndView getStudent(@RequestParam("id") int id) {
@@ -77,7 +86,25 @@ public class HomeController {
 		  modelAndView.addObject("listStudents", listName);
 		  
 	  return modelAndView; 
-}
+   }
+	  
+	  @RequestMapping(value = "getStudentByIdGreaterThan")
+	  public ModelAndView getStudentGreaterThan(@RequestParam("id") int id) {
+		  ModelAndView modelAndView = new ModelAndView("showStudents");
+		  List<Student> listName = serviceStudent.findByIdGreaterThan(id);
+		  modelAndView.addObject("listStudents", listName);
+		  return modelAndView;
+	  }
+	  
+	  @RequestMapping(value = "getStudentByScoreSorted")
+	  public ModelAndView getStudentByScoreSorted(@RequestParam("score") int score) {
+		  ModelAndView modelAndView = new ModelAndView("showStudents");
+		  List<Student> listName = serviceStudent.findByScoreSorted(score);
+		  modelAndView.addObject("listStudents", listName);
+		  
+		  return modelAndView;
+		  
+	  }
 	 
 
 	@RequestMapping(value = "getStudents")

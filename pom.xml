@@ -57,6 +57,12 @@
 		    <version>1.2</version>
 		</dependency>
 		
+		<!-- default Spring dont suport XML, so we need to add this dependency -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.dataformat</groupId>
+		    <artifactId>jackson-dataformat-xml</artifactId>
+		    </dependency>
+		
 		<dependency>
 		    <groupId>org.mortbay.jasper</groupId>
 		    <artifactId>jasper-jsp</artifactId>

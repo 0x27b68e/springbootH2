@@ -5,6 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>hello</title>
+<style>
+a { color: blue;}
+</style>
 </head>
 <body>
 <p>Add Student</p>
@@ -15,9 +18,12 @@
 <input type="submit" value="Submit">
 </form>
 
-<a href="/read">Read Student By Id <br />
-<a href="/readByName">Read Student By Name<br />
+<a href="/read">Read Student By Id  <br />  
+<a href="/readByName">Read Student By Name<br />  
 <a href="/readByScore">Read Student By Score<br />
+<a href="/readByIdGreaterThan">Read Student By Id Greater Than<br />
+<a href="/readByScoreSorted">Read Student By Score Sorted<br />
+
 <a href="/getStudents">Read All Student<br />
 <a href="/update">Update Student<br />
 <a href="/delete">Delete Student
